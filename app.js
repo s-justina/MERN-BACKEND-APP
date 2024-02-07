@@ -1,9 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const placesRoutes = require('./routes/places-routes');
 const usersRoutes = require('./routes/users-routes');
 const HttpError = require('./modules/http-error');
+
+const MONGO_DB_PASSWORD = process.env.MONGO_DB_PASSWORD;
 
 const app = express();
 
@@ -25,4 +29,11 @@ app.use((error, req, res, next) => {
     res.json({message: error.message || "An unknown error occurred."})
 })
 
-app.listen(5000);
+mongoose.connect(`mongodb+srv://justyna-mern:${MONGO_DB_PASSWORD}@cluster0.cl484fi.mongodb.net/?retryWrites=true&w=majority`)
+    .then(
+        () => app.listen(5000)
+    )
+    .catch(
+        err => console.log(err)
+    );
+;
