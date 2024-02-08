@@ -1,6 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
-const HttpError = require('../modules/http-error');
+const HttpError = require('../models/http-error');
 
 const API_KEY = process.env.API_LOCATION_KEY;
 

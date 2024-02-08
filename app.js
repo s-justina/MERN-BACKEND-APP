@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const placesRoutes = require('./routes/places-routes');
 const usersRoutes = require('./routes/users-routes');
-const HttpError = require('./modules/http-error');
+const HttpError = require('./models/http-error');
 
 const MONGO_DB_PASSWORD = process.env.MONGO_DB_PASSWORD;
 
