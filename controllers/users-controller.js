@@ -1,4 +1,3 @@
-const {v4: uuidv4} = require('uuid');
 const {validationResult} = require('express-validator');
 const HttpError = require("../models/http-error");
 const User = require('../models/user');
@@ -32,7 +31,7 @@ const signup = async (req, res, next) => {
         return next(error);
     }
 
-    const {name, email, password, places} = req.body;
+    const {name, email, password} = req.body;
     let existingUser;
 
     try {
@@ -52,7 +51,7 @@ const signup = async (req, res, next) => {
         email,
         image: "https://cdn.pixabay.com/photo/2014/04/02/17/07/user-307993_1280.png",
         password,
-        places
+        places: []
     })
 
     try {
