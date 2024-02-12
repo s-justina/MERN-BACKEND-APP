@@ -41,7 +41,7 @@ const signup = async (req, res, next) => {
     const createdUser = new User({
         name,
         email,
-        image: "https://cdn.pixabay.com/photo/2014/04/02/17/07/user-307993_1280.png",
+        image: req.file.path,
         password,
         places: []
     })
