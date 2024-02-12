@@ -65,7 +65,7 @@ const createPlace = async (req, res, next) => {
         description,
         address,
         location: coordinates,
-        image: "https://travel.usnews.com/dims4/USNEWS/4aee1bb/2147483647/resize/976x652%5E%3E/crop/976x652/quality/85/?url=https%3A%2F%2Ftravel.usnews.com%2Fimages%2FEmpire_State_Building_Getty_Zsolt_Hlinka.jpg",
+        image: req.file.path,
         creator
     })
 

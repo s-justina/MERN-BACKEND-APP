@@ -14,7 +14,8 @@ router.post("/signup",
         check('email').normalizeEmail().isEmail(),
         check('password').isLength({min: 6})
     ],
-    usersController.signup);
+    usersController.signup
+);
 
 router.post("/login", usersController.login);
 
