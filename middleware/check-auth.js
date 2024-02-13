@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 const HttpError = require("../models/http-error");
-require('dotenv').config();
 
-const JWT_SECRET = process.env.SECRET_JWT_STRING;
+const JWT_SECRET = process.env.JWT_KEY;
 
 module.exports = (req, res, next) => {
     if (req.method === 'OPTIONS') {

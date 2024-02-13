@@ -1,13 +1,11 @@
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 const HttpError = require("../models/http-error");
 const User = require('../models/user');
 
-const SALT_NUMBER = process.env.SALT;
-const JWT_SECRET = process.env.SECRET_JWT_STRING;
+const JWT_SECRET = process.env.JWT_KEY;
 
 const getUsers = async (req, res, next) => {
     let users;
@@ -47,7 +45,7 @@ const signup = async (req, res, next) => {
 
     let hashedPassword;
     try {
-        hashedPassword = await bcrypt.hash(password, +SALT_NUMBER);
+        hashedPassword = await bcrypt.hash(password, 12);
     } catch (err) {
         console.log(err)
         const error = new HttpError('Could not create user, please try again.', 500);
